@@ -1,0 +1,212 @@
+{
+  "info": {
+    "name": "Shipments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "List Shipments",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/shipments?page=0&size=10&search=abc&sortBy=createdAt&order=asc",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "shipments"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "0",
+              "description": "Page number (0-based)"
+            },
+            {
+              "key": "size",
+              "value": "10",
+              "description": "Number of items per page"
+            },
+            {
+              "key": "search",
+              "value": "abc",
+              "description": "Search text applied to trackingNumber, origin, destination"
+            },
+            {
+              "key": "sortBy",
+              "value": "createdAt",
+              "description": "Field to sort by"
+            },
+            {
+              "key": "order",
+              "value": "asc",
+              "description": "Sort order: asc or desc"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 - List Shipments",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/shipments?page=0&size=10&search=abc&sortBy=createdAt&order=asc"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": "{\n  \"totalItems\": 1,\n  \"totalPages\": 1,\n  \"currentPage\": 0,\n  \"data\": [\n    {\n      \"_id\": \"64b6f5a0e2f5a2c1d4a2b3c4\",\n      \"trackingNumber\": \"TRK123456\",\n      \"senderName\": \"Alice\",\n      \"receiverName\": \"Bob\",\n      \"origin\": \"Lagos\",\n      \"destination\": \"Abuja\",\n      \"status\": \"pending\",\n      \"createdAt\": \"2025-12-10T12:00:00.000Z\",\n      \"updatedAt\": \"2025-12-10T12:00:00.000Z\"\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Shipment",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/shipments/:id"
+      },
+      "response": [
+        {
+          "name": "200 - Get Shipment",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/shipments/64b6f5a0e2f5a2c1d4a2b3c4"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": "{\n  \"data\": {\n    \"_id\": \"64b6f5a0e2f5a2c1d4a2b3c4\",\n    \"trackingNumber\": \"TRK123456\",\n    \"senderName\": \"Alice\",\n    \"receiverName\": \"Bob\",\n    \"origin\": \"Lagos\",\n    \"destination\": \"Abuja\",\n    \"status\": \"pending\",\n    \"createdAt\": \"2025-12-10T12:00:00.000Z\",\n    \"updatedAt\": \"2025-12-10T12:00:00.000Z\"\n  },\n  \"message\": \"Shipment retrieved successfully\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Create Shipment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"trackingNumber\": \"TRK123456\",\n  \"senderName\": \"Alice\",\n  \"receiverName\": \"Bob\",\n  \"origin\": \"Lagos\",\n  \"destination\": \"Abuja\",\n  \"status\": \"pending\"\n}"
+        },
+        "url": "{{base_url}}/api/shipments"
+      },
+      "response": [
+        {
+          "name": "201 - Created",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trackingNumber\": \"TRK123456\",\n  \"senderName\": \"Alice\",\n  \"receiverName\": \"Bob\",\n  \"origin\": \"Lagos\",\n  \"destination\": \"Abuja\",\n  \"status\": \"pending\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/shipments"
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": "{\n  \"data\": {\n    \"_id\": \"64b6f5a0e2f5a2c1d4a2b3c4\",\n    \"trackingNumber\": \"TRK123456\",\n    \"senderName\": \"Alice\",\n    \"receiverName\": \"Bob\",\n    \"origin\": \"Lagos\",\n    \"destination\": \"Abuja\",\n    \"status\": \"pending\",\n    \"createdAt\": \"2025-12-10T12:00:00.000Z\",\n    \"updatedAt\": \"2025-12-10T12:00:00.000Z\"\n  },\n  \"message\": \"Shipment created successfully\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update Shipment",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"in_transit\"\n}"
+        },
+        "url": "{{base_url}}/api/shipments/:id"
+      },
+      "response": [
+        {
+          "name": "200 - Updated",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"in_transit\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/shipments/64b6f5a0e2f5a2c1d4a2b3c4"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": "{\n  \"data\": {\n    \"_id\": \"64b6f5a0e2f5a2c1d4a2b3c4\",\n    \"trackingNumber\": \"TRK123456\",\n    \"senderName\": \"Alice\",\n    \"receiverName\": \"Bob\",\n    \"origin\": \"Lagos\",\n    \"destination\": \"Abuja\",\n    \"status\": \"in_transit\",\n    \"createdAt\": \"2025-12-10T12:00:00.000Z\",\n    \"updatedAt\": \"2025-12-10T12:30:00.000Z\"\n  },\n  \"message\": \"Shipment updated successfully\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Delete Shipment",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{base_url}}/api/shipments/:id"
+      },
+      "response": [
+        {
+          "name": "200 - Deleted",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/shipments/64b6f5a0e2f5a2c1d4a2b3c4"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": "{\n  \"message\": \"Shipment deleted successfully\"\n}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000"
+    }
+  ]
+}
