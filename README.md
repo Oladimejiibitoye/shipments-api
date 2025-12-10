@@ -68,7 +68,7 @@ npm run test
 ```
 
 ## Notes for assessment submission
-- Live base URL: 
+- Live base URL: https://shipments-api.onrender.com
 - Github: https://github.com/Oladimejiibitoye/shipments-api.git
 - Postman collection: included in repository
 - Contact: Oladimeji Ibitoye
