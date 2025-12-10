@@ -19,11 +19,11 @@ Express + MongoDB REST API for managing shipments.
 
 1. Install
 ```bash
-git clone <repo>
+git clone <https://github.com/Oladimejiibitoye/shipments-api.git>
 cd shipments-api
 npm install
 cp .env.example .env
-# set MONGO_URI in .env
+set MONGO_URI in .env
 ```
 
 2. Run
@@ -69,6 +69,7 @@ npm run test
 
 ## Notes for assessment submission
 - Live base URL: 
+- Github: https://github.com/Oladimejiibitoye/shipments-api.git
 - Postman collection: included in repository
 - Contact: Oladimeji Ibitoye
 
